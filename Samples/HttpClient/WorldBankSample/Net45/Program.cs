@@ -14,16 +14,16 @@ namespace WorldBankSample
         private static async void RunClient()
         {
             // Create an HttpClient instance
-            HttpClient client = new HttpClient();
+            var client = new HttpClient();
 
             // Send a request asynchronously and continue when complete
-            HttpResponseMessage response = await client.GetAsync(_address);
+            var response = await client.GetAsync(_address);
 
             // Check that response was successful or throw exception
             response.EnsureSuccessStatusCode();
 
             // Read response asynchronously as JToken and write out top facts for each country
-            JArray content = await response.Content.ReadAsAsync<JArray>();
+            var content = await response.Content.ReadAsAsync<JArray>();
 
             Console.WriteLine("First 50 countries listed by The World Bank...");
             foreach (var country in content[1])
